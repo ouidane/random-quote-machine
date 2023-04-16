@@ -24,7 +24,6 @@ function App() {
   ];
 
   useEffect(()=>{
-    randomColor()
     fetchQoute()
   },[])
 
@@ -41,8 +40,8 @@ function App() {
   }
 
   const handelClick = () => {
-    randomColor()
     fetchQoute()
+    randomColor()
   }
 
   return (
