@@ -27,21 +27,13 @@ function App() {
     fetchQoute()
   },[])
 
-  const fetchQoute = () => {
-    fetch("https://api.quotable.io/random")
-      .then(response => response.json())
-      .then(response => setQoute(response))
-      .catch(err => console.error(err));
-  }
-
-  const randomColor = () => {
+  async function fetchQoute() {
+    const response = await fetch("https://api.quotable.io/random")
+    const data = await response.json()
     const hexColor = colors[Math.floor(Math.random()*colors.length)]
+    
+    setQoute(data)
     setColor(hexColor)
-  }
-
-  const handelClick = () => {
-    fetchQoute()
-    randomColor()
   }
 
   return (
@@ -56,10 +48,14 @@ function App() {
         </div>
         <div className='buttons'>
           <div className="social-media-icons">
-          <a id="tweet-quote" href="https://twitter.com/intent/tweet" ><FontAwesomeIcon style={{color: `${color}`}} icon={faTwitterSquare} /></a>
-          <a id="tumblr-quote" href="https://www.tumblr.com/widgets" ><FontAwesomeIcon style={{color: `${color}`}} icon={faTumblrSquare} /></a>
+            <a id="tweet-quote" href="https://twitter.com/intent/tweet" >
+              <FontAwesomeIcon style={{color: `${color}`}} icon={faTwitterSquare} />
+            </a>
+            <a id="tumblr-quote" href="https://www.tumblr.com/widgets" >
+              <FontAwesomeIcon style={{color: `${color}`}} icon={faTumblrSquare} />
+            </a>
           </div>
-          <button id='new-quote' style={{backgroundColor: `${color}`, color: "#fff"}} onClick={handelClick}>New Quote</button>
+          <button id='new-quote' style={{backgroundColor: `${color}`, color: "#fff"}} onClick={fetchQoute}>New Quote</button>
         </div>
       </div>
     </div>

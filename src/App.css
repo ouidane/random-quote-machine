@@ -13,7 +13,7 @@
   border-radius: 3px;
   width: 450px;
   padding: 40px 50px;
-  background-color: #fff;
+  background-color: #fff !important;
 }
 .quote-text{
   width: 450px;
@@ -59,7 +59,7 @@
   height: 38px;
     border: none;
     border-radius: 3px;
-    color: #fff;
+    color: #fff !important;
     font-size: 0.85rem;
     padding: 8px 18px 6px 18px;
     opacity: 1;
